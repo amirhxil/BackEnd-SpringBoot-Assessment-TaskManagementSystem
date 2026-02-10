@@ -34,12 +34,12 @@ Postman collection for API testing
 
 DEFAULT USERS (AUTO-CREATED ON STARTUP)
 
-Admin User
+1. Admin User
 Username: admin
 Password: admin123
 Role: ADMIN
 
-Normal User
+2. Normal User
 Username: user1
 Password: user123
 Role: USER
@@ -52,11 +52,11 @@ Install PostgreSQL from:
 https://www.postgresql.org/download/
 
 Create database:
-CREATE DATABASE taskmanager;
+CREATE DATABASE task_manager;
 
 Configure application.properties:
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/taskmanager
+spring.datasource.url=jdbc:postgresql://localhost:5432/task_manager
 spring.datasource.username=postgres
 spring.datasource.password=your_password
 
@@ -103,7 +103,7 @@ token (leave value empty)
 
 AUTHENTICATION APIS
 
-LOGIN
+1. LOGIN
 
 POST http://localhost:8080/api/auth/login
 
@@ -117,7 +117,8 @@ Postman Scripts → Post-response:
 let jsonData = pm.response.json();
 pm.environment.set("token", jsonData.token);
 
-LOGOUT
+
+2. LOGOUT
 
 POST http://localhost:8080/api/auth/logout
 
@@ -134,13 +135,14 @@ TASK APIS
 ALL TASK APIS REQUIRE HEADER:
 Authorization: Bearer {{token}}
 
-VIEW TASKS
+1. VIEW TASKS
 
 GET http://localhost:8080/api/tasks
 
 Body: empty
 
-CREATE TASK (ADMIN ONLY)
+
+2. CREATE TASK (ADMIN ONLY)
 
 POST http://localhost:8080/api/tasks
 
@@ -151,7 +153,8 @@ Body:
 "status": "OPEN"
 }
 
-UPDATE TASK
+
+3. UPDATE TASK
 
 PUT http://localhost:8080/api/tasks/{id}
 
@@ -165,7 +168,8 @@ Body:
 "status": "DONE"
 }
 
-DELETE TASK (ADMIN ONLY)
+
+4. DELETE TASK (ADMIN ONLY)
 
 DELETE http://localhost:8080/api/tasks/{id}
 
@@ -179,7 +183,8 @@ Response:
 "message": "Task deleted successfully"
 }
 
-ASSIGN TASK (ADMIN ONLY)
+
+5. ASSIGN TASK (ADMIN ONLY)
 
 PUT http://localhost:8080/api/tasks/{taskId}/assign/{userId}
 
