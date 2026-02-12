@@ -28,8 +28,8 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<?> createTask(@RequestBody Task task,
-                                        @RequestHeader("Authorization") String token) {
-        token = token.replace("Bearer ", "");
+                                        @RequestHeader("Authorization") String authHeader) {
+        String token = authHeader.replace("Bearer ", "");
 
         if (!isAdmin(token)) {
             return ResponseEntity.status(403).body("Forbidden: Admin only");
