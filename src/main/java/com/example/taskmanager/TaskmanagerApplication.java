@@ -26,9 +26,9 @@ public class TaskmanagerApplication {
 
 
 				User user1 = new User();
-				admin.setUsername("user1");
-				admin.setPassword("user123"); // simple password for demo
-				admin.setRole(com.example.taskmanager.entity.Role.USER);
+				user1.setUsername("user1");
+				user1.setPassword("user123"); // simple password for demo
+				user1.setRole(com.example.taskmanager.entity.Role.USER);
 				userRepository.save(user1);
 				System.out.println("User1 user created: username=user1, password=user123");
 			}
